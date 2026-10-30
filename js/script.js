@@ -57,6 +57,11 @@ function siguiente () {
 
    var n = actual + 1;
 
+   if (n === total) {
+         n = 0;
+
+   }
+
    mostrar (n);
 
 }
@@ -64,6 +69,10 @@ function siguiente () {
 function anterior () {
 
       var n = actual - 1;
+
+      if (n < 0) {
+         n = total -1;
+      }
 
     mostrar (n);
 
