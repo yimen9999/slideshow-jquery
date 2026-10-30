@@ -1,0 +1,136 @@
+/* =========================================================
+   SLIDESHOW CON JQUERY · Diseño Web Avanzado
+   ========================================================= */
+
+/* ---------- Variables ---------- */
+:root {
+    --color-fondo: #F3F6F5;
+    --color-superficie: #FFFFFF;
+    --color-texto: #12181B;
+    --color-suave: #5B6B67;
+    --color-acento: #16BFAE;
+    --color-borde: #DCE3E1;
+
+    --fuente-ui: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --fuente-codigo: "Courier New", monospace;
+
+    --espacio: 1.5rem;
+    --radio: 12px;
+    --transicion: 0.25s ease;
+}
+
+/* ---------- Reset básico ---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: calc(var(--espacio) * 1.5);
+    padding: calc(var(--espacio) * 2) var(--espacio);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: var(--fuente-ui);
+    line-height: 1.5;
+}
+
+code {
+    font-family: var(--fuente-codigo);
+    font-size: 0.95em;
+    padding: 0.05rem 0.35rem;
+    background-color: var(--color-borde);
+    border-radius: 4px;
+}
+
+/* ---------- Cabecera ---------- */
+.cabecera {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    text-align: center;
+}
+
+.cabecera__kicker {
+    font-family: var(--fuente-codigo);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-acento);
+}
+
+.cabecera h1 {
+    font-size: 2.2rem;
+}
+
+.cabecera__texto {
+    color: var(--color-suave);
+}
+
+/* ---------- Slideshow ---------- */
+.slideshow {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* La "pantalla" donde se apilan las diapositivas */
+.slideshow__pantalla {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: var(--radio);
+    background-color: var(--color-texto);
+}
+
+/* Todas las diapositivas ocupan el mismo sitio, una encima de otra */
+.slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;          /* la imagen llena la pantalla sin deformarse */
+    display: none;              /* ocultas por defecto */
+}
+
+/* Solo la primera se ve al cargar la página */
+.slide:first-child {
+    display: block;
+}
+
+/* ---------- Controles ---------- */
+.slideshow__controles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.boton {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-superficie);
+    background-color: var(--color-texto);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color var(--transicion);
+}
+
+.boton:hover {
+    background-color: var(--color-acento);
+}
+
+.slideshow__contador {
+    font-family: var(--fuente-codigo);
+    color: var(--color-suave);
+}
