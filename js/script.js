@@ -52,6 +52,29 @@ function mostrar (indiceSlide) {
 
 }
 
+// ACTUALIZAMOS CONTADOR
+
+$("#contador").text((actual+1) + "/" + total);
+
+// funcionamiento automatico con la funcion setInterval (), esta funcion tiene 2
+// parámetros:primero es lo que quiero que haga y el segundo de cada cuanto tiempo 3 segs
+
+var automatico = setInterval(siguiente, 3000); 
+var espera;
+
+// si el usuario interactua con los botones se para el funcionamiento automatico y vuelve a los 5 seg 
+
+function pausar () {
+   clearInterval(automatico);
+   clearTimeout(espera);
+
+   espera = setTimeout(function() {
+      automatico= setInterval(siguiente, 3000);
+   } , 5000);
+   //  5 segs
+
+}
+
 
 function siguiente () {
 
@@ -82,13 +105,13 @@ function anterior () {
 
 
 botonNext.on("click", function() {
-   console.log("Next slide");
-      siguiente();
-   
+  siguiente();
+  pausar();
 });
 
 botonPrev.on("click", function() {
-   console.log("Previous slide");
-      anterior();
-   
+  anterior();
+  pausar();
 });
+
+// añadir 
